@@ -1,0 +1,17 @@
+#!/bin/bash
+
+TARGET=$1
+PROXYD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [[ $1 == "" ]]; then
+  echo "usage: hb binname (parameters)"
+  echo "       hb start server"
+  exit 0
+fi
+
+if [[ -e "$PROXYD/../$TARGET" ]]; then
+  shift 1
+  bash $PROXYD/../$TARGET $@
+else
+  echo "bin/$TARGET does not exist!"
+fi
